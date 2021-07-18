@@ -16,7 +16,7 @@ plugins {
 }
 
 group = 'com.github.jkatzwinkel'
-version = '0.0.905'
+version = '0.0.906'
 sourceCompatibility = '11'
 
 publishing {
@@ -41,8 +41,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
-    implementation 'org.slf4j:slf4j-api:2.0.0-alpha1'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.13.0-rc1'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0-M1'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.0-M1'
@@ -57,8 +57,8 @@ test {
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled true
+        xml.required.set(true)
+        html.required.set(true)
     }
     finalizedBy 'generateJacocoBadge'
 }
