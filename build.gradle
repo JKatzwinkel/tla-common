@@ -16,7 +16,7 @@ plugins {
 }
 
 group = 'com.github.jkatzwinkel'
-version = '0.0.906'
+version = '0.0.907'
 sourceCompatibility = '11'
 
 publishing {
@@ -38,15 +38,15 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.20'
-    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.13.0-rc1'
-    implementation 'org.slf4j:slf4j-api:2.0.0-alpha2'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+    implementation 'org.slf4j:slf4j-api:2.0.0-alpha5'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0-M1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.0-M1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0-M1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
 test {
