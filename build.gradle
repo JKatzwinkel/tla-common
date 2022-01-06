@@ -11,12 +11,12 @@ plugins {
     id 'checkstyle'
     id 'java-library'
     id 'maven-publish'
-    id 'com.github.ben-manes.versions' version '0.39.0'
+    id 'com.github.ben-manes.versions' version '0.41.0'
     id 'com.github.dawnwords.jacoco.badge' version '0.2.4'
 }
 
 group = 'com.github.jkatzwinkel'
-version = '0.0.907'
+version = '0.0.908'
 sourceCompatibility = '11'
 
 publishing {
@@ -41,7 +41,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.13.1'
     implementation 'org.slf4j:slf4j-api:2.0.0-alpha5'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
