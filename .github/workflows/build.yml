@@ -1,3 +1,5 @@
+---
+
 name: build
 
 on: [push, pull_request]
@@ -23,8 +25,4 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - uses: KyleAure/junit-report-annotations-action@1.6
-      with:
-        name: "tests"
-        access-token: ${{ secrets.GITHUB_TOKEN }}
-      if: always()
+...
