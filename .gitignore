@@ -7,6 +7,5 @@
 build
 bin
 
-.gitattributes
 .project
 .vscode/
