@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.jkatzwinkel:tla-common:master-SNAPSHOT'
+    implementation 'com.github.jkatzwinkel:tla-common:main-SNAPSHOT'
 }
 ```
 
