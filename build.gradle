@@ -34,7 +34,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:edge-SNAPSHOT'
     annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     implementation 'org.slf4j:slf4j-api:2.0.6'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
