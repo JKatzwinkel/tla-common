@@ -27,12 +27,11 @@ publishing {
 
 repositories {
     mavenCentral()
-    maven { url 'https://projectlombok.org/edge-releases' } // until lombok 1.18.26 release in maven cental
 }
 
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.26'
-    annotationProcessor 'org.projectlombok:lombok:edge-SNAPSHOT'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     api 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
     implementation 'org.slf4j:slf4j-api:2.0.6'
