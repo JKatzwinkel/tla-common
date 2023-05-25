@@ -30,8 +30,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.26'
-    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     api 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
     implementation 'org.slf4j:slf4j-api:2.0.7'
