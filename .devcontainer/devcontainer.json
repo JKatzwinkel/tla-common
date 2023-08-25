@@ -1,0 +1,17 @@
+{
+	"image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ryanluker.vscode-coverage-gutters"
+			],
+			"settings": {
+				"editor.renderWhitespace": "all",
+				"coverage-gutters.coverageFileNames": [
+					"jacocoTestReport.xml"
+				],
+				"coverage-gutters.showLineCoverage": true
+			}
+		}
+	}
+}
