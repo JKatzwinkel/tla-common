@@ -9,7 +9,10 @@ plugins {
 
 group = 'com.github.jkatzwinkel'
 version = '0.0.909'
-sourceCompatibility = '17'
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 publishing {
     publications {
