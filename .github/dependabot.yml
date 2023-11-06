@@ -10,6 +10,10 @@ updates:
       interval: "daily"
     reviewers:
       - "jkatzwinkel"
+    groups:
+      junit:
+        patterns:
+          - "org.junit.jupiter:junit-jupiter-*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
