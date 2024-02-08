@@ -1,5 +1,5 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -10,7 +10,8 @@
 				"coverage-gutters.coverageFileNames": [
 					"jacocoTestReport.xml"
 				],
-				"coverage-gutters.showLineCoverage": true
+				"coverage-gutters.showLineCoverage": true,
+				"window.density.editorTabHeight": "compact"
 			}
 		}
 	}
