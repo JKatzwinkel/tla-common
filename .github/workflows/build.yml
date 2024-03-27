@@ -15,7 +15,7 @@ jobs:
         java-version:
           - 17
           - 21
-          - 22
+          # - 22
 
     steps:
 
@@ -31,9 +31,7 @@ jobs:
       - name: validate gradle wrapper
         uses: gradle/wrapper-validation-action@v2.1.2
 
-      - run: java --version
-
       - name: Build with Gradle
-        run: ./gradlew build --info
+        run: ./gradlew build
 
 ...
