@@ -30,11 +30,14 @@ public enum Script {
     }
 
     public static Script ofLemmaId(String id) {
-        return switch (id.toLowerCase().charAt(0)) {
-            case 'c' -> COPTIC;
-            case 'd' -> DEMOTIC;
-            default -> HIERATIC;
-        };
+        char c = id.toLowerCase().charAt(0);
+        if (c == 'c') {
+            return COPTIC;
+        } else if (c == 'd') {
+            return DEMOTIC;
+        } else {
+            return HIERATIC;
+        }
     }
 
 }
