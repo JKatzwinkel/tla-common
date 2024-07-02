@@ -25,19 +25,9 @@ public class TextDto extends NamedNodeDto {
      */
     private WordCount wordCount;
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class WordCount {
-        private int min = 0;
-        private int max = 0;
-        /**
-         * Purely for compatibility reasons!
-         */
+    public record WordCount(int min, int max) {
         public WordCount(int count) {
-            this.min = count;
-            this.max = count;
+            this(count, count);
         }
     }
 

@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import tla.domain.Util;
@@ -27,6 +28,7 @@ public class TextTest {
         TextDto t = (TextDto) Util.loadFromFile("text", "A2HWO5CX6RCQ5IBSV2MHAAIYA4.json");
         assertAll("deserialization from file should preserve all contents",
             () -> assertEquals("tlademotic", t.getCorpus()),
+            () -> assertTrue(t.getWordCount().min() > 0),
             () -> assertTrue(t.getPaths() != null, "corpus object paths should be deserialized"),
             () -> assertNotNull(t.getSUID(), "short unique ID"),
             () -> assertEquals(1, t.getPaths().size(), "expect exactly 1 path"),
@@ -74,6 +76,21 @@ public class TextTest {
             "[[{\"eclass\":\"BTSTCObject\",\"id\":\"2\",\"name\":\"papyrus\",\"type\":\"type\"}]]",
             tla.domain.util.IO.json(t1.getPaths()),
             "paths serialization"
+        );
+    }
+
+    @Test
+    @DisplayName("serialize wordcount")
+    void serializeWordCount() {
+        var dto = new TextDto();
+        dto.setWordCount(new TextDto.WordCount(23));
+        var json = tla.domain.util.IO.json(dto);
+        assertTrue(
+            json.contains(
+                """
+                    "wordCount":{"min":23,"max":23}
+                """.trim()
+            ), json
         );
     }
 
