@@ -66,11 +66,12 @@ check {
 }
 
 checkstyle {
-    toolVersion '8.29'
+    toolVersion '10.17.0'
     configFile file("config/checkstyle/checkstyle.xml")
     ignoreFailures = true
     maxErrors = 100
 }
+
 checkstyleMain {
     configProperties += [
         'checkstyle.header.file': file('config/checkstyle/java.header'),
