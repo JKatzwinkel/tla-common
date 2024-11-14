@@ -29,7 +29,7 @@ jobs:
           distribution: temurin
 
       - name: validate gradle wrapper
-        uses: gradle/actions/wrapper-validation@v4.1.0
+        uses: gradle/actions/wrapper-validation@v4.2.0
 
       - name: Build with Gradle
         run: ./gradlew build
