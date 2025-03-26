@@ -20,10 +20,10 @@ jobs:
         uses: gradle-update/update-gradle-wrapper-action@v2.1.0
         with:
           pr-title-template: >-
-            build(deps): update gradle wrapper from %sourceVersion%
+            build(deps): Update Gradle wrapper from %sourceVersion%
             to %targetVersion%
           commit-message-template: >-
-            build(deps): update gradle wrapper from %sourceVersion%
+            build(deps): Update Gradle wrapper from %sourceVersion%
             to %targetVersion%
           labels: dependencies, gradle
           reviewers: jkatzwinkel
