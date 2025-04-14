@@ -66,12 +66,11 @@ check {
 }
 
 checkstyle {
-    toolVersion '10.17.0'
-    configFile file("config/checkstyle/checkstyle.xml")
+    toolVersion = '10.23.0'
+    configFile = file("config/checkstyle/checkstyle.xml")
     ignoreFailures = true
     maxErrors = 100
 }
-
 checkstyleMain {
     configProperties += [
         'checkstyle.header.file': file('config/checkstyle/java.header'),
@@ -79,7 +78,7 @@ checkstyleMain {
     ]
 }
 checkstyleTest {
-    configFile file("config/checkstyle/checkstyle-tests.xml")
+    configFile = file("config/checkstyle/checkstyle-tests.xml")
     configProperties += [
         'checkstyle.header.file': file('config/checkstyle/java.header'),
         'checkstyle.regexp.header.file': file('config/checkstyle/java_regexp.header')
