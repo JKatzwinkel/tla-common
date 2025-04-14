@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       changed: ${{ steps.changed.outputs.changed }}
+      ref: ${{ steps.ref.outputs.ref }}
 
     steps:
       - uses: actions/checkout@v4.2.2
@@ -20,13 +21,12 @@ jobs:
         uses: gradle-update/update-gradle-wrapper-action@v2.1.0
         with:
           pr-title-template: >-
-            build(deps): Update Gradle wrapper from %sourceVersion%
-            to %targetVersion%
+            Update Gradle wrapper from %sourceVersion% to %targetVersion%
           commit-message-template: >-
-            build(deps): Update Gradle wrapper from %sourceVersion%
-            to %targetVersion%
+            Update Gradle wrapper from %sourceVersion% to %targetVersion%
           labels: dependencies, gradle
           reviewers: jkatzwinkel
+          release-channel: release-candidate
 
       - name: determine change status
         id: changed
@@ -34,9 +34,17 @@ jobs:
           chg=$(git diff --shortstat HEAD..main | wc -l)
           echo "changed=${chg}" >> ${GITHUB_OUTPUT}
 
-  post-update-tests:
+      - name: get branch name && save ref
+        id: ref
+        run: |
+          branch=$(git branch --show-current)
+          echo "ref=refs/heads/${branch}" >> ${GITHUB_OUTPUT}
+
+  test:
     needs: [update-gradle-wrapper]
     uses: ./.github/workflows/build.yml
     if: needs.update-gradle-wrapper.outputs.changed != '0'
+    with:
+      ref: ${{ needs.update-gradle-wrapper.outputs.ref }}
 
 ...
