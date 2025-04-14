@@ -1,15 +1,34 @@
 package tla.domain.command;
 
 /**
- * Can be used to identify search command adapters that might want to invoke query expansion, meaning
- * that they don't need to return search hits, but an IDs aggregation instead.
+ * Can be used to identify search command adapters that might want to invoke query expansion,
+ * meaning that they don't need to return search hits, but an IDs aggregation instead.
  */
 public interface Expandable {
 
-    public void setExpand(boolean expand);
-    public boolean isExpand();
+    /**
+     * Sets this search command's expansion flag.
+     * @param expand expansion flag value
+     */
+    void setExpand(boolean expand);
 
-    public void setRootIds(String[] ids);
-    public String[] getRootIds();
+    /**
+     * Returns this search command's expansion flag.
+     * @return expansion flag
+    */
+    boolean isExpand();
+
+    /**
+     * Set the IDs of the ancestors within an object tree which this
+     * search command shall specify.
+     * @param ids ancestor IDs
+     */
+    void setRootIds(String[] ids);
+
+    /**
+     * Returns the ancestor IDs specified by this search command.
+     * @return ancestor IDs specified
+    */
+    String[] getRootIds();
 
 }

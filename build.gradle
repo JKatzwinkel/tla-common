@@ -40,11 +40,11 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
 
     testImplementation 'org.slf4j:slf4j-simple:2.1.0-alpha1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.12.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.12.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.12.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.12.2'
     // instead of explicitly declaring this dependency, maybe migrate to test suites:
     // https://docs.gradle.org/8.4/userguide/jvm_test_suite_plugin.html
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.12.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.12.2'
 }
 
 test {
@@ -66,12 +66,11 @@ check {
 }
 
 checkstyle {
-    toolVersion '10.17.0'
-    configFile file("config/checkstyle/checkstyle.xml")
+    toolVersion = '10.23.0'
+    configFile = file("config/checkstyle/checkstyle.xml")
     ignoreFailures = true
     maxErrors = 100
 }
-
 checkstyleMain {
     configProperties += [
         'checkstyle.header.file': file('config/checkstyle/java.header'),
@@ -79,7 +78,7 @@ checkstyleMain {
     ]
 }
 checkstyleTest {
-    configFile file("config/checkstyle/checkstyle-tests.xml")
+    configFile = file("config/checkstyle/checkstyle-tests.xml")
     configProperties += [
         'checkstyle.header.file': file('config/checkstyle/java.header'),
         'checkstyle.regexp.header.file': file('config/checkstyle/java_regexp.header')

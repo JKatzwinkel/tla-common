@@ -13,6 +13,7 @@ import java.lang.annotation.Target;
 public @interface Status {
     /**
      * Status code as numeric value.
+     * @return numeric status code
      */
-    public int value();
+    int value();
 }
