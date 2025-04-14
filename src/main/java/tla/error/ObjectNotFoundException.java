@@ -1,7 +1,6 @@
 package tla.error;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,15 +15,25 @@ public class ObjectNotFoundException extends TlaStatusCodeException {
 
     private static final long serialVersionUID = 3545121302433575193L;
 
-    final static String MSG_TEMPLATE = "The %sobject with ID '%s' could not be found!";
+    static final String MSG_TEMPLATE = "The %sobject with ID '%s' could not be found!";
 
-    private String objectId;
-    private String eclass;
+    final private String objectId;
+    final private String eclass;
 
+    /**
+     * Creates an instance with only the missing object's ID.
+     * @param id the ID of the object that could not be found.
+     */
     public ObjectNotFoundException(String id) {
         this(id, null);
     }
 
+    /**
+     * Creates an instance with both ID and {@code eClass} of the
+     * missing object.
+     * @param id the ID of the object
+     * @param eclass the {@code eClass} of the object
+     */
     public ObjectNotFoundException(String id, String eclass) {
         this.objectId = id;
         this.eclass = eclass;
@@ -32,10 +41,12 @@ public class ObjectNotFoundException extends TlaStatusCodeException {
 
     @Override
     public String getMessage() {
+        var eclassValue = "";
+        if (this.eclass != null) {
+            eclassValue = this.eclass + " ";
+        }
         return String.format(
-            MSG_TEMPLATE,
-            (this.eclass != null) ? (this.eclass + " ") : "",
-            this.objectId
+            MSG_TEMPLATE, eclassValue, this.objectId
         );
     }
 
