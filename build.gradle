@@ -36,7 +36,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.38'
     annotationProcessor 'org.projectlombok:lombok:1.18.38'
 
-    api 'com.fasterxml.jackson.core:jackson-databind:2.18.3'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
     implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
 
     testImplementation 'org.slf4j:slf4j-simple:2.1.0-alpha1'
