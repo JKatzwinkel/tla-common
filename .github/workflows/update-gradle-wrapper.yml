@@ -21,12 +21,12 @@ jobs:
         uses: gradle-update/update-gradle-wrapper-action@v2.1.0
         with:
           pr-title-template: >-
-            Update Gradle wrapper from %sourceVersion% to %targetVersion%
+            Update gradle wrapper from %sourceVersion% to %targetVersion%
           commit-message-template: >-
-            Update Gradle wrapper from %sourceVersion% to %targetVersion%
+            Update gradle wrapper from %sourceVersion% to %targetVersion%
           labels: dependencies, gradle
           reviewers: jkatzwinkel
-          release-channel: release-candidate
+          release-channel: stable
 
       - name: determine change status
         id: changed
