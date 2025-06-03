@@ -8,8 +8,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers:
-      - "jkatzwinkel"
     groups:
       junit:
         patterns:
@@ -20,7 +18,5 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers:
-      - "jkatzwinkel"
 
 ...
