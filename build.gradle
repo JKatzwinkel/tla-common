@@ -40,11 +40,11 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
 
     testImplementation 'org.slf4j:slf4j-simple:2.1.0-alpha1'
-    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.13.4'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.13.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:6.0.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:6.0.0'
     // instead of explicitly declaring this dependency, maybe migrate to test suites:
     // https://docs.gradle.org/8.4/userguide/jvm_test_suite_plugin.html
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:6.0.0'
 }
 
 test {
