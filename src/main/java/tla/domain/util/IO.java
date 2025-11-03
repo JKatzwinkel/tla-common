@@ -9,6 +9,7 @@ import tools.jackson.databind.MapperFeature;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.core.StreamReadFeature;
 
 /**
  * Utility class allowing for eg. deserializing a modeled object from file.
@@ -20,6 +21,8 @@ public class IO {
         MapperFeature.SORT_PROPERTIES_ALPHABETICALLY
     ).disable(
         MapperFeature.SORT_CREATOR_PROPERTIES_FIRST
+    ).enable(
+        StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION
     ).build();
 
     /**
