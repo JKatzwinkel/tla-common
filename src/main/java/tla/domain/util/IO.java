@@ -17,6 +17,10 @@ import tools.jackson.core.StreamReadFeature;
 @Slf4j
 public class IO {
 
+    private IO() {
+        // coco
+    }
+
     private static ObjectMapper mapper = JsonMapper.builder().enable(
         MapperFeature.SORT_PROPERTIES_ALPHABETICALLY
     ).disable(

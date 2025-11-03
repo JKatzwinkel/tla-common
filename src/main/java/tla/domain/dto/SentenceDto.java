@@ -6,7 +6,7 @@ import java.util.SortedMap;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +17,7 @@ import tla.domain.model.Language;
 import tla.domain.model.SentenceToken;
 import tla.domain.model.Transcription;
 import tla.domain.model.meta.BTSeClass;
+
 
 @Getter
 @Setter
@@ -29,7 +30,7 @@ public class SentenceDto extends AbstractDto {
     /**
      * How sentence relates to a text's contents.
      */
-    private SentenceContext context;
+    private SentenceContext context = new SentenceContext();
 
     private String type;
 
@@ -53,7 +54,10 @@ public class SentenceDto extends AbstractDto {
     @Getter
     @Setter
     @NoArgsConstructor
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonInclude(JsonInclude.Include.NON_DEFAULT)
+    @JsonPropertyOrder(
+        {"textId", "textType", "position", "line", "paragraph", "variants"}
+    )
     public static class SentenceContext {
         /**
          * ID of the text containing sentence.
@@ -68,8 +72,8 @@ public class SentenceDto extends AbstractDto {
          * text's contents.
          */
         @JsonAlias({"pos"})
-        @JsonProperty("pos")
-        private int position;
+        @JsonInclude(JsonInclude.Include.ALWAYS)
+        private int position = 0;
         /**
          * Value of the last new line indicator found before beginning of this sentence.
          * Might be null.
@@ -82,7 +86,7 @@ public class SentenceDto extends AbstractDto {
         /**
          * Number of variants which exist for the same sentence due to ambivalences.
          */
-        private int variants;
+        private int variants = 1;
     }
 
 }
