@@ -4,10 +4,11 @@ import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import lombok.extern.slf4j.Slf4j;
+import tools.jackson.databind.MapperFeature;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Utility class allowing for eg. deserializing a modeled object from file.
@@ -15,7 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class IO {
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static ObjectMapper mapper = JsonMapper.builder().enable(
+        MapperFeature.SORT_PROPERTIES_ALPHABETICALLY
+    ).disable(
+        MapperFeature.SORT_CREATOR_PROPERTIES_FIRST
+    ).build();
 
     /**
      * Deserialize a JSON file into an object of the specified type.
@@ -41,16 +46,18 @@ public class IO {
      * @return JSON-formatted string or <code>null</code>
      */
     public static String json(Object object) {
-        try {
+        return json(object, null);
+    }
+
+    public static String json(Object object, String indent) {
+        if (indent == null) {
             return mapper.writeValueAsString(object);
-        } catch (JsonProcessingException e) {
-            log.error(
-                "Serialization of {} object failed: {}",
-                object.getClass().getName(),
-                e.getMessage()
-            );
-            return null;
         }
+        return mapper.writer().with(
+            DtoPrettyPrinter.create(indent)
+        ).with(
+            SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS
+        ).writeValueAsString(object);
     }
 
     /** get a jackson {@link ObjectMapper} instance*/

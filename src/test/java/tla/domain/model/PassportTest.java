@@ -1,23 +1,25 @@
 package tla.domain.model;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static tla.domain.util.IO.json;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import tla.domain.Util;
-import tla.domain.util.DtoPrettyPrinter;
+import tools.jackson.databind.ObjectMapper;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static tla.domain.util.IO.json;
 
 class PassportTest {
 
@@ -407,11 +409,9 @@ class PassportTest {
 
     @Test
     void serialize_complexFromFile() throws Exception {
-        mapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
-        DefaultPrettyPrinter printer = DtoPrettyPrinter.create();
         Passport p = loadFromFile("2BJVOCJBVVFEZHGYWNX4J5VYGI.json");
         String in = Util.loadFromFileAsString("passport", "2BJVOCJBVVFEZHGYWNX4J5VYGI.json");
-        String out = mapper.writer(printer).writeValueAsString(p);
+        String out = tla.domain.util.IO.json(p, "  ");
         assertAll("input and output should be the same",
             () -> assertEquals(in.length(), out.length(), "input and output string length should be same"),
             () -> assertEquals(in.charAt(in.length() - 1), out.charAt(out.length() - 1), "last character should match"),

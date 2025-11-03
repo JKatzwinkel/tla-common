@@ -1,5 +1,6 @@
 package tla.error;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class ObjectNotFoundException extends TlaStatusCodeException {
 
     static final String MSG_TEMPLATE = "The %sobject with ID '%s' could not be found!";
 
+    @JsonProperty
     final private String objectId;
     final private String eclass;
 

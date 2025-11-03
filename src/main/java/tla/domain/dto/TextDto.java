@@ -1,6 +1,6 @@
 package tla.domain.dto;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +25,7 @@ public class TextDto extends NamedNodeDto {
      */
     private WordCount wordCount;
 
+    @JsonPropertyOrder({"min", "max"})
     public record WordCount(int min, int max) {
         public WordCount(int count) {
             this(count, count);

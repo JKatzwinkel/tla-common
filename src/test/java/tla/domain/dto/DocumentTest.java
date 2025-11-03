@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 public class DocumentTest {
 
@@ -36,7 +36,7 @@ public class DocumentTest {
     void instantiateWrongEclass() {
         assertAll("attempt to instantiate ths entry DTO from object with eclass BTSLemmaEntry should throw illegalargumentexception",
             () -> assertThrows(
-                com.fasterxml.jackson.databind.exc.InvalidTypeIdException.class,
+                tools.jackson.databind.exc.InvalidTypeIdException.class,
                 () -> {mapper.readValue(
                     "{\"id\":\"1\",\"eclass\":\"BTSLemmaEntry\"}",
                     ThsEntryDto.class

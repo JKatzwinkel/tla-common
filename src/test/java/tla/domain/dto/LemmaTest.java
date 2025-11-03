@@ -1,5 +1,13 @@
 package tla.domain.dto;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static tla.domain.util.IO.json;
+
 import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -8,10 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,11 +26,9 @@ import tla.domain.model.Language;
 import tla.domain.model.Passport;
 import tla.domain.model.SentenceToken;
 import tla.domain.model.Transcription;
-import tla.domain.util.DtoPrettyPrinter;
 import tla.domain.util.IO;
+import tools.jackson.databind.ObjectMapper;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static tla.domain.util.IO.json;
 
 public class LemmaTest {
 
@@ -207,18 +209,16 @@ public class LemmaTest {
 
     @Test
     void serialize_complexFromFile() throws Exception {
-        mapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
-        DefaultPrettyPrinter printer = DtoPrettyPrinter.create();
         LemmaDto p = loadFromFile("10070.json");
         String in = Util.loadFromFileAsString("lemma", "10070.json");
-        String out = mapper.writer(printer).writeValueAsString(p);
+        String out = tla.domain.util.IO.json(p, "  ");
         assertAll("input and output should differ in specific details",
             () -> assertTrue(in.contains("revisionState"), "input contains revisionState field"),
             () -> assertTrue(!out.contains("revisionState"), "output does not contain revisionState field"),
             () -> assertTrue(out.contains("reviewState"), "output contains reviewState field"),
             () -> assertTrue(in.contains("contributors"), "input contains contributors field"),
             () -> assertTrue(!out.contains("contributors"), "output does not contain contributors field"),
-            () -> assertTrue(out.contains("2015-06-26\"\n"), "output contains shortened time value")
+            () -> assertTrue(out.contains("2015-06-26\",\n"), "output contains shortened time value")
         );
     }
 }

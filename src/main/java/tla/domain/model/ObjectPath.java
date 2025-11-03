@@ -3,7 +3,7 @@ package tla.domain.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import tla.domain.model.meta.Resolvable;
 
