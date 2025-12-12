@@ -1,31 +1,23 @@
 package tla.domain.util;
 
-import com.fasterxml.jackson.core.util.DefaultIndenter;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.core.util.Separators;
+import tools.jackson.core.util.DefaultIndenter;
+import tools.jackson.core.util.DefaultPrettyPrinter;
+import tools.jackson.core.util.Separators;
+import tools.jackson.core.util.Separators.Spacing;
+
 
 public class DtoPrettyPrinter extends DefaultPrettyPrinter {
 
     private static final long serialVersionUID = -857602864138545423L;
 
-    public static DefaultPrettyPrinter create() {
-        DefaultPrettyPrinter pp = new DtoPrettyPrinter()
-            .withSeparators(new Separators());
-        pp.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-        return pp;
+    public static DefaultPrettyPrinter create(String indent) {
+        DefaultPrettyPrinter pp = new DtoPrettyPrinter().withSeparators(
+            new Separators().withObjectNameValueSpacing(
+                Spacing.AFTER
+            )
+        );
+        var indenter = DefaultIndenter.SYSTEM_LINEFEED_INSTANCE.withIndent(indent);
+        return pp.withArrayIndenter(indenter).withObjectIndenter(indenter);
     }
 
-    @Override
-    public DefaultPrettyPrinter createInstance() {
-        return create();
-    }
-
-    @Override
-    public DefaultPrettyPrinter withSeparators(Separators separators) {
-        _separators = separators;
-        _objectFieldValueSeparatorWithSpaces = separators.getObjectFieldValueSeparator() + " ";
-        return this;
-    }
-
-    
 }

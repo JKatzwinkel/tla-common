@@ -1,7 +1,7 @@
 [![](https://jitpack.io/v/jkatzwinkel/tla-common.svg)](https://jitpack.io/#jkatzwinkel/tla-common)
 ![build](https://github.com/JKatzwinkel/tla-common/workflows/build/badge.svg)
-![LINE](https://img.shields.io/badge/line--coverage-88.91%25-brightgreen.svg)
-![METHOD](https://img.shields.io/badge/method--coverage-92.76%25-brightgreen.svg)
+![LINE](https://img.shields.io/badge/line--coverage-90.10%25-brightgreen.svg)
+![METHOD](https://img.shields.io/badge/method--coverage-93.96%25-brightgreen.svg)
 
 Copyright (c) 2020-2021 Berlin-Brandenburgische Akademie der Wissenschaften
 

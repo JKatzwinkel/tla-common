@@ -10,7 +10,7 @@ import tla.domain.model.meta.Resolvable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.AllArgsConstructor;
 
