@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import lombok.AccessLevel;
@@ -329,11 +329,10 @@ public class Passport {
      * TODO: this is obviously pretty dumb, fix this later pls
     */
     private boolean qualifiesAsThesaurusReference() {
-        return (this.thsValueCache != null && List.of("id", "type", "eclass", "name")
-            .stream()
-            .allMatch(
-                key -> {return this.thsValueCache.containsKey(key);}
-            )
+        return this.thsValueCache != null && List.of(
+            "id", "type", "eclass", "name"
+        ).stream().allMatch(
+            this.thsValueCache::containsKey
         );
     }
 
