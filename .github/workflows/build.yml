@@ -38,7 +38,7 @@ jobs:
           distribution: temurin
 
       - name: validate gradle wrapper
-        uses: gradle/actions/wrapper-validation@v5.0.0
+        uses: gradle/actions/wrapper-validation@v6.1.0
 
       - name: Build with Gradle
         run: ./gradlew build --warning-mode all
