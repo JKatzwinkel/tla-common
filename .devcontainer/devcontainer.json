@@ -1,11 +1,12 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/java:1-21-bookworm",
+	"image": "mcr.microsoft.com/devcontainers/java:3-21-trixie",
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"ryanluker.vscode-coverage-gutters"
 			],
 			"settings": {
+				"java.import.gradle.java.home": "/usr/lib/jvm/msopenjdk-current/",
 				"editor.renderWhitespace": "all",
 				"coverage-gutters.coverageFileNames": [
 					"jacocoTestReport.xml"
