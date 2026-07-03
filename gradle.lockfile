@@ -1,10 +1,11 @@
 # This is a Gradle generated file for dependency locking.
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
-com.fasterxml.jackson.core:jackson-annotations:2.21=compileClasspath,runtimeClasspath
+# To regenerate this file, run: ./gradlew :dependencies --write-locks
+com.fasterxml.jackson.core:jackson-annotations:2.22=compileClasspath,runtimeClasspath
 org.projectlombok:lombok:1.18.46=compileClasspath
 org.slf4j:slf4j-api:2.1.0-alpha1=compileClasspath,runtimeClasspath
-tools.jackson.core:jackson-core:3.1.4=compileClasspath,runtimeClasspath
-tools.jackson.core:jackson-databind:3.1.4=compileClasspath,runtimeClasspath
-tools.jackson:jackson-bom:3.1.4=compileClasspath,runtimeClasspath
+tools.jackson.core:jackson-core:3.2.0=compileClasspath,runtimeClasspath
+tools.jackson.core:jackson-databind:3.2.0=compileClasspath,runtimeClasspath
+tools.jackson:jackson-bom:3.2.0=compileClasspath,runtimeClasspath
 empty=
